@@ -1,0 +1,11 @@
+.ReactionTimeTestCSS {
+  button {
+    width: 15em;
+    height: 5em;
+    font-size: 1.5em;
+  }
+
+  .waiting {
+    cursor: progress;
+  }
+}

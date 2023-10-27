@@ -1,0 +1,74 @@
+.FavoriteSymbolsCSS {
+  /* main container for the list items */
+  #list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .mainContainer {
+    min-width: 120px;
+    height: 120px;
+    border: 1px solid;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+
+  /* upper part container of item */
+  .symbolContainer {
+    height: 100px;
+    text-align: center;
+    font-size: 90px;
+    cursor: copy;
+    overflow: hidden;
+  }
+
+  .bottomContainer {
+    height: 20px;
+  }
+
+  .msgContainer {
+    float: left;
+    text-align: left;
+    font-size: 0.75em;
+  }
+
+  .buttonContainer {
+    float: right;
+    font-size: 18px;
+    text-align: right;
+    cursor: pointer;
+  }
+
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .resultItem {
+    width: 60px;
+    height: 60px;
+    margin: 10px 10px 10px 0px;
+    padding: 5px;
+    border: 1px solid;
+  }
+
+  .resultSymbol {
+    height: 40px;
+    font-size: 40px;
+    text-align: center;
+    cursor: copy;
+  }
+
+  .resultButtonContainer {
+    text-align: right;
+  }
+
+  .resultButton {
+    height: 20px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
