@@ -23,16 +23,62 @@ router.get('/', (req, res) => {
   res.send('API server')
 })
 
-function validate(data) {
+// checking for too many requests in given time period
+let requests = []
+function tooManyRequests(ip, host) {
+
+  const maxAllowedRequests = 5 // amount of requests to be allowed in given "timeWIndow"
+  const timeWIndow = 10 * 1000 // duration of "timeWIndow" in milli-seconds
+
+  // logging data about current request attempt
+  requests.push({
+    timestamp: getTimestamp(), // timestamp of request attempt in milli-seconds (unix time)
+    ip: ip, // IP addrest of user who try to make request
+    host: host // hostname of requested endpoint
+  })
+
+  // remove old logs from storage
+  const filteredArray = requests.filter((log) => getTimestamp() - timeWIndow < log.timestamp )
+  requests = filteredArray // overwriting old logs with filtered logs
+
+  // counting request attempts
+  let i = 0 // counting request attempts from same IP
+  let j = 0 // counting request attempts to same host
+  requests.forEach((log) => {
+    i = log.ip === ip && i + 1
+    j = log.host === host && j + 1
+  })
+
+  // determining if too many request attempts were made
+  if (i >= maxAllowedRequests || j >= maxAllowedRequests) {
+    return true
+  } else {
+    return false
+  }
+
+}
+
+// returns current unix time timestamp in milli-seconds
+function getTimestamp() {
+  return Math.floor(Date.now())
+}
+
+// validate user input data
+function validate(data, userIP) {
 
   console.log('Validating input data')
 
   const errors = []
   const validated = {}
 
+  const urlParse = new URL(data.inputUrl) // parsing URL from user input
+
+  if (tooManyRequests(userIP, urlParse.hostname)) {
+    errors.push('Too many request, please try again later')
+  }
+
   // validating URL
   try {
-    const urlParse = new URL(data.inputUrl)
     validated.inputProtocol = urlParse.protocol
     validated.inputSecure = validated.inputProtocol === 'https:' ? true : false
     if (validated.inputProtocol !== 'http:' && validated.inputProtocol !== 'https:') {
@@ -92,7 +138,7 @@ router.post('/make-request', async (req, res) => {
 
   console.log('Request received')
 
-  const validation = validate(req.body)
+  const validation = validate(req.body, req.ip)
   if (validation.errors.length === 0) {
     // input data validation ok
     // console.log(validation.data)
