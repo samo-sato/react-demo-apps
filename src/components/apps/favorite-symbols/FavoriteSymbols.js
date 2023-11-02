@@ -36,8 +36,6 @@ const emojidb = require('./emojidb.json') // JSON database with symbols
 
 export function FavoriteSymbols() {
 
-  //console.log(emojidb['😀'])
-
   // name of main cookie variable - we will save symbols into it
   const cookieName = 'symbols'
 

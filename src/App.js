@@ -41,7 +41,7 @@ const apps = [
     slug: 'api-tester',
     component: <ApiTester />,
     title: 'API tester',
-    description: 'REST API testing tool'
+    description: 'REST API testing app'
   }
 ]
 
@@ -76,7 +76,7 @@ function App() {
         return apps[i];
       }
     }
-    console.log('current tool info not detected');
+    console.log('current app info not detected');
     return false;
   }
   const currentTool = getCurrentTool();

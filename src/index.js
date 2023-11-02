@@ -1,15 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 
 import './index.css'
 import App from './App'
 
+// const baseName = '/react-demo-apps'
+const baseName = ''
 const content = (
-  <Router>
+  <BrowserRouter basename={baseName}>
     <App />
-  </Router>
+  </BrowserRouter>
 )
 
 const container = document.getElementById('root')

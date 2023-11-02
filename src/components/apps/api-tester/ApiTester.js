@@ -5,7 +5,9 @@ import { useRef, useState } from 'react'
 import './ApiTester.css'
 
 // API server endpoint root
-const backendRoot = window.location.protocol + '//' + window.location.hostname + ':3001'
+const portNumber = 3001
+const portSegment = portNumber ? `:${portNumber}` : ''
+const backendRoot = `${window.location.protocol}//${window.location.hostname}${portSegment}`
 
 export function ApiTester() {
 
@@ -179,9 +181,12 @@ export function ApiTester() {
           </div>
           <div>
           <div id="arrows">
-              <span className="arrow">></span>
-              <span className="arrow">></span>
-              <span className="arrow">></span>
+            { /* generating "chain" of arrow symbols */ }
+            {
+              Array.from({ length: 3 }, (_, i) => (
+                <span className="arrow" key={i}>></span>
+              ))
+            }
           </div>
           </div>
           <div className="col">

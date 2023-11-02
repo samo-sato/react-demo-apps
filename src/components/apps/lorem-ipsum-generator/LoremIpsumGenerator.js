@@ -165,8 +165,10 @@ export function LoremIpsumGenerator() {
 
   // initializing our main function on component load
   // second argument (empty array "[]") needed to avoid infinite loop
+  // the comment begining with "eslint" is to disable warning from react about empty dependendy aray
   useEffect(() => {
     generate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

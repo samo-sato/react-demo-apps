@@ -1,3 +1,4 @@
+// for working with file and directory paths
 const path = require('path')
 
 // REST API functionality

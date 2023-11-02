@@ -1,7 +1,7 @@
-const path = require('path')
 const express = require('express')
 const app = express()
-const nodeFetch = require('node-fetch') // module for making http requests
+const path = require('path') // for working with file and directory paths
+const nodeFetch = require('node-fetch') // for making http requests
 const bodyParser = require('body-parser')
 
 // cors middleware
@@ -17,7 +17,9 @@ app.use(bodyParser.text()) // for receiving plain text data in the body
 
 // using "express router" in order to always use "api" path at begining of endpoint url
 const router = express.Router()
-app.use('/api', router)
+//const basePath = '/react-demo-apps' // in case app is running under sub-path
+const basePath = ''
+app.use(`${basePath}/api`, router)
 
 router.get('/', (req, res) => {
   res.send('API server')
