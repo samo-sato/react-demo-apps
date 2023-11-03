@@ -73,14 +73,14 @@ function validate(data, userIP) {
   const errors = []
   const validated = {}
 
-  const urlParse = new URL(data.inputUrl) // parsing URL from user input
-
-  if (tooManyRequests(userIP, urlParse.hostname)) {
+  // checking for too many request attempts
+  if (tooManyRequests(userIP, data.inputUrl)) {
     errors.push('Too many request, please try again later')
   }
 
   // validating URL
   try {
+    const urlParse = new URL(data.inputUrl) // parsing URL from user input
     validated.inputProtocol = urlParse.protocol
     validated.inputSecure = validated.inputProtocol === 'https:' ? true : false
     if (validated.inputProtocol !== 'http:' && validated.inputProtocol !== 'https:') {
@@ -106,7 +106,7 @@ function validate(data, userIP) {
     }
   } catch (error) {
     console.log(error)
-    errors.push('Invalid URL')
+    errors.push('Invalid URL ?')
   }
 
   // validating if given headers is valid JSON string
