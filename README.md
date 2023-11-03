@@ -20,17 +20,18 @@ Main web app contains multiple light weight apps with different functionality as
 
 Use command `node backend/server.js`
 
-## Running the app on localhost
+## Running on localhost
 
 - `npm start`
 
-## Deployment of the app on public server
+## Deployment on public server
 
 - In following files, you may need to modify port numbers, paths and BrowserRouter basename:
-  - backend/server.js
-  - backend/api/api.js
-  - src/index.js
-  - src/components/apps/api-tester/ApiTester.js  
+  - `backend/server.js` *port* number variable of API server
+  - `backend/api/api.js` *basePath* variable with name of path in case the app is running under sub-path
+  - `src/index.js` *basename* variable with name of path in case the app is running under sub-path
+  - `src/components/apps/api-tester/ApiTester.js` *portNumber* of API server 
+  - `package.json` add `homepage` property with desired path in case the app is running under sub-path
 
 - Build the app with `npm run build`
 
