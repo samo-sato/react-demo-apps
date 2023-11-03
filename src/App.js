@@ -1,10 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom'
 
 // app's  components with more general content
 import { SubHeader } from './components/SubHeader'
 
 // app's components with main sub-content (content pages or "apps")
+import { NotFound } from './components/apps/not-found/NotFound'
 import { ReactionTimeTest } from './components/apps/reaction-time-test/ReactionTimeTest'
 import { LoremIpsumGenerator } from './components/apps/lorem-ipsum-generator/LoremIpsumGenerator'
 import { FavoriteSymbols } from './components/apps/favorite-symbols/FavoriteSymbols'
@@ -51,6 +53,12 @@ function App() {
   // react hook providing current url location
   const location = useLocation()
 
+  useEffect(() => {
+    document.title = (!currentTool.title) ? 'Not available' : currentTool.title
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location])
+
+
   // handling selectbox change in order to redirect between sub-content components (pages)
   const navigate = useNavigate() // hooks should always be declared inside functional components but outside nested functions or if statements
   const handleToolChange = (e) => {
@@ -67,6 +75,7 @@ function App() {
       <Route path={path} element={element} key={index} />
     )
   })
+  componentRoutes.push(<Route path="*" element=<NotFound /> key="nf" />)
 
   // data about current sub-content page
   const getCurrentTool = () => {
