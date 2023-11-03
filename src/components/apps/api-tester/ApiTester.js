@@ -11,7 +11,7 @@ const portSegment = portNumber ? `:${portNumber}` : ''
 const backendRoot = `${window.location.protocol}//${window.location.hostname}${portSegment}`
 
 export function ApiTester() {
-console.log(backendRoot)
+
   // loading animation effect
   let intervalID
   function loadingEffectStart() {
