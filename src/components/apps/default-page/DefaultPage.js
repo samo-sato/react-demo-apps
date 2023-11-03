@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 // data about sub-content pages
-import { apps } from '../../../App.js';
+import { apps } from '../../../App.js'
 
 // main purpose of this component is to render main menu
 export function DefaultPage(props) {
 
-  const items = [];
+  const items = []
 
   apps.forEach((item, index) => {
     if (index > 0) { // do not need to render item with index "0" because it is default page or "home page"
@@ -29,5 +29,5 @@ export function DefaultPage(props) {
         {items}
       </ul>
     </div>
-  );
+  )
 }

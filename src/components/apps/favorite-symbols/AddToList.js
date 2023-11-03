@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 export function AddToList(props) {
 
-  const searchResults = [];
+  const searchResults = []
   props.searchResults.forEach((value, index) => {
 
-    let name = value.name;
-    let emoji = value.emoji;
-    let title = 'Copy "' + name + '" emoji to clipboard';
+    let name = value.name
+    let emoji = value.emoji
+    let title = 'Copy "' + name + '" emoji to clipboard'
 
     searchResults.push(
       <div className="resultItem" id={'resultItem' + index} key={index}>
@@ -18,8 +18,8 @@ export function AddToList(props) {
           <span className="resultButton" title="Save this symbol" aria-label="Save this symbol" role="img" index={index} emoji={emoji} onClick={props.handleSaveResult}>💾</span>
         </div>
       </div>
-    );
-  });
+    )
+  })
 
   return (
     <div>
@@ -49,5 +49,5 @@ export function AddToList(props) {
         {searchResults}
       </div>
     </div>
-  );
+  )
 }

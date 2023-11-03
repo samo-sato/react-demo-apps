@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
 // this component renders menu item selector and description of currently selected sub-content page
 export function SubHeader(props) {
 
-  let content;
+  let content
   if (props.currentTool.slug === '') { // if current page is default page
-    content = <h2>Select app</h2>;
+    content = <h2>Select app</h2>
   } else { // if current page is sub-content page
 
     // generate html option elements for select element
-    const menuOptions = [];
+    const menuOptions = []
     props.apps.forEach((tool) => {
-      menuOptions.push(<option key={tool.slug} value={tool.slug}>{tool.title}</option>);
-    });
+      menuOptions.push(<option key={tool.slug} value={tool.slug}>{tool.title}</option>)
+    })
 
     // menu items and descrition of currently selected sub-content page
     content = (
@@ -24,12 +24,12 @@ export function SubHeader(props) {
         { props.currentTool.description }
         </span>
       </div>
-    );
+    )
   }
 
   return (
     <div>
       { content }
     </div>
-  );
+  )
 }

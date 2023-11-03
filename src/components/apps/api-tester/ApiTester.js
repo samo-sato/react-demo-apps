@@ -60,8 +60,8 @@ console.log(backendRoot)
   inputs.method = useRef(null)
   inputs.headers = useRef(null)
   inputs.body = useRef(null)
-  const textareaHeaders = useRef(null);
-  const textareaBody = useRef(null);
+  const textareaHeaders = useRef(null)
+  const textareaBody = useRef(null)
 
   // useState
   const [ errors, setErrors ] = useState('')
