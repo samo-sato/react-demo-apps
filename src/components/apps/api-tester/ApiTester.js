@@ -4,11 +4,12 @@ import { useRef, useState } from 'react'
 
 import './ApiTester.css'
 
-// API server endpoint root
-const portNumber = 3001 // development deployment
-//const portNumber = '' // production public IP deployment
+// API server endpoint url
+const portNumber = process.env.REACT_APP_BACKEND_PORT
 const portSegment = portNumber ? `:${portNumber}` : ''
 const backendRoot = `${window.location.protocol}//${window.location.hostname}${portSegment}`
+const path = `${process.env.REACT_APP_BASE_PATH}/api/make-request`
+const resource = `${backendRoot}${path}`
 
 export function ApiTester() {
 
@@ -87,8 +88,6 @@ export function ApiTester() {
           inputHeaders: inputs.headers.current.value,
           inputBody: inputs.body.current.value
         })
-
-      const resource = backendRoot + '/api/make-request'
 
       const options = {
         method: 'POST',

@@ -17,8 +17,7 @@ app.use(bodyParser.text()) // for receiving plain text data in the body
 
 // using "express router" in order to always use "api" path at begining of endpoint url
 const router = express.Router()
-//const basePath = '/react-demo-apps' // in case app is running under sub-path
-const basePath = ''
+const basePath = process.env.RDA_BASE_PATH
 app.use(`${basePath}/api`, router)
 
 router.get('/', (req, res) => {

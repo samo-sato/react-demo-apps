@@ -5,7 +5,7 @@ const path = require('path')
 const { app } = require(path.resolve(__dirname, 'api', 'api'))
 
 // starting http server
-const port = 3001
+const port = process.env.RDA_BACKEND_PORT
 app.listen(port, () => {
   console.log(`API server is listening on port ${port}`)
 })
