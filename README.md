@@ -49,11 +49,11 @@ Example of setting up OS specific environment variable `MY_VAR` with value of `H
 
 ### React Specific Environment Variables
 
-Following variables are stored in `.env.example` file in project directory. **Set your variables into `.env` file instead.**
+Following variables are stored in `.env.example` file in project directory. **Set variables into `.env` file instead.**
 
 |Variable Name|Default value|Description|
 |---|---|---|
-|`REACT_APP_BACKEND_PORT`|3001|Frontend will make requests to this port number. Leave empty string no port required in resource URL.|
+|`REACT_APP_BACKEND_PORT`|3001|Frontend will make requests to this port number. Leave empty string if no port is required in resource URL.|
 |`REACT_APP_BASE_PATH`|*empty string*|Value should be equal to `RDA_BASE_PATH` variable|
 
 **Do not** store sensitive data in `.env` file, as it could be accessed by anyone.
@@ -70,6 +70,6 @@ Use command `node backend/server.js` from project directory, to run backend scri
 
 - Run the app using command `npm start` or make build `npm run build`
 
-- If you did build the app, then serve the app with `serve -s build` or use other serving tool like *Nginx* or *Apache*
+- If using build, then serve the app with `serve -s build` or use other serving tool like *Nginx* or *Apache*
 
 MIT License Copyright (c) 2023 https://github.com/samo-sato
