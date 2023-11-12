@@ -1,0 +1,10 @@
+.LoremIpsumGeneratorCSS .checkboxWithLabel {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1200px) {
+  .LoremIpsumGeneratorCSS .checkboxWithLabel {
+    display: block;
+    padding-top: 20px;
+  }
+}

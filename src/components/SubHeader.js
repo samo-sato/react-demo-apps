@@ -16,12 +16,12 @@ export function SubHeader(props) {
 
     // menu items and descrition of currently selected sub-content page
     content = (
-      <div>
+      <div className="subHeader">
         <select className="mainSelect" value={ props.currentTool.slug } onChange={props.handleToolChange}>
           { menuOptions }
         </select>
-        <span>
-        { props.currentTool.description }
+        <span className="descrition">
+          { props.currentTool.description }
         </span>
       </div>
     )

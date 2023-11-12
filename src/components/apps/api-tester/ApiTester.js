@@ -180,14 +180,14 @@ export function ApiTester() {
             </div>
           </div>
           <div>
-          <div id="arrows">
-            { /* generating "chain" of arrow symbols */ }
-            {
-              Array.from({ length: 3 }, (_, i) => (
-                <span className="arrow" key={i}>></span>
-              ))
-            }
-          </div>
+            <div id="arrows">
+              { /* generating "chain" of arrow symbols */ }
+              {
+                Array.from({ length: 3 }, (_, i) => (
+                  <span className="arrow" key={i}>></span>
+                ))
+              }
+            </div>
           </div>
           <div className="col">
             <h2>View response</h2>

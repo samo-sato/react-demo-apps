@@ -26,16 +26,19 @@ export function AddToList(props) {
       <table border={0}>
         <tbody>
           <tr>
-            <td>Insert new symbol here:</td>
+            <td style={{textAlign: 'right'}}>Add:</td>
             <td>
-              <input type="text" id="symbol-input" onKeyPress={props.handleEnter}></input>
-              <button onClick={props.handleAdd} className="leftMargin">Add symbol</button>
+              <input type="text" id="symbol-input" onKeyPress={props.handleEnter} className="rightMargin" placeholder="paste or type" ></input>
+              <button onClick={props.handleAdd} >Add symbol</button>
             </td>
           </tr>
+          <tr colSpan={2}>
+            <td></td>
+          </tr>
           <tr>
-            <td>Search for new symbol:</td>
+            <td>Search new:</td>
             <td>
-              <input type="text" id="symbol-search" onChange={props.handleSearch}></input>
+              <input type="text" id="symbol-search" onChange={props.handleSearch} className="rightMargin" placeholder="type to search" ></input>
             </td>
           </tr>
           <tr>

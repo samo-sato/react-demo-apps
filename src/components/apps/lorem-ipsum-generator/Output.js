@@ -23,7 +23,7 @@ export function Output(props) {
       <p>Output:</p>
       <textarea defaultValue={props.outputString} disabled={true}></textarea>
       <button onClick={handleCopyClickcopy}>Copy to clipboard</button>
-      <span id="clipboardMessage"></span>
+      <span id="clipboardMessage" className="leftMargin"></span>
       <p>Number of characters <span title='Including dots, spaces and line breaks' style={{cursor: 'help'}}>(?)</span>: <b>{props.charCount}</b></p>
       { showHideHtml(jsxWordList(), 'words') }
     </div>

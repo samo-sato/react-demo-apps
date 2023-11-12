@@ -106,11 +106,11 @@ export function ReactionTimeTest() {
   }, [diff])
 
   const page = {}
-  page['first'] = <button ref={buttonRef} onClick={handleStart}>Click here to start the test</button>
-  page['ready'] = <button ref={buttonRef} onClick={handleCheat}>Be ready!</button>
-  page['cheat'] = <button ref={buttonRef} onClick={handleStart}>Click only when prompted!<br />Click to restart the test.</button>
-  page['prompt'] = <button ref={buttonRef} onClick={handlePrompt}><b style={{fontSize: '2.5em'}}>{promptText}</b></button>
-  page['result'] = <button ref={buttonRef} onClick={handleStart}>Your reaction time was<br /><b style={{fontSize: '1.6em'}}>{diff !== null ? `${diff} milliseconds` : 'N/A'}</b><br />Click again to restart the test</button>
+  page['first'] = <button className="bigAssButton" ref={buttonRef} onClick={handleStart}>Click here to start the test</button>
+  page['ready'] = <button className="bigAssButton waiting" ref={buttonRef} onClick={handleCheat}>Be ready!</button>
+  page['cheat'] = <button className="bigAssButton" ref={buttonRef} onClick={handleStart}>Click only when prompted!<br />Click to restart the test.</button>
+  page['prompt'] = <button className="bigAssButton" ref={buttonRef} onClick={handlePrompt}><b style={{fontSize: '2.5em'}}>{promptText}</b></button>
+  page['result'] = <button className="bigAssButton" ref={buttonRef} onClick={handleStart}>Your reaction time was<br /><b style={{fontSize: '1.6em'}}>{diff !== null ? `${diff} milliseconds` : 'N/A'}</b><br />Click again to restart the test</button>
 
   return (
     <div className="ReactionTimeTestCSS">
@@ -119,7 +119,7 @@ export function ReactionTimeTest() {
         {jsxContent}
       </div>
       <br />
-      <input type="checkbox" id="copyCheckbox" onClick={handleCopy} /><label htmlFor="copyCheckbox">Copy result to clipboard</label>
+      <input type="checkbox" id="copyCheckbox" className="checkInput" onClick={handleCopy} /><label htmlFor="copyCheckbox">Copy result to clipboard</label>
       <br />
       <br />
       { showHideHtml(jsxInstructions, 'instructions') }

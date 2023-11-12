@@ -61,7 +61,7 @@ function tooManyRequests(ip, host) {
 
 // returns current unix time timestamp in milli-seconds
 function getTimestamp() {
-  return Math.floor(Date.now())
+  return Date.now()
 }
 
 // validate user input data

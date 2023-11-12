@@ -1,8 +1,19 @@
+/* CSS variables */
+:root {
+    --light-color: #70ff00;
+    --bg-alt-color: #004506;
+    --margins: 10px;
+}
+
+::placeholder {
+  color: #00b40f;
+}
+
 body {
   background-color: #000000;
-  color: #70ff00;
+  color: var(--light-color);
   font-family: "Courier New", monospace;
-  font-size: 1.5em;
+  font-size: 24px;
 }
 
 h2 {
@@ -11,27 +22,28 @@ h2 {
   margin-bottom: 0px;
   font-weight: bold;
   padding: 10px;
-  background-color: #70ff00;
+  background-color: var(--light-color);
   color: #006109;
 }
 
 article {
-  border-top: 4px solid #70ff00;
-  border-bottom: 4px solid #70ff00;
+  border-top: 4px solid var(--light-color);
+  border-bottom: 4px solid var(--light-color);
   padding: 15px;
 }
 
 select {
   color: inherit;
-  background-color: #004506;
-  border: 1px solid #70ff00;
+  background-color: var(--bg-alt-color);
+  border: 1px solid var(--light-color);
   padding: 5px;
+  border-radius: 0px;
 }
 
 select.mainSelect {
   color: inherit;
-  background-color: #004506;
-  border: 1px solid #70ff00;
+  background-color: var(--bg-alt-color);
+  border: 1px solid var(--light-color);
   font-weight: bold;
   font-size: 1.1em;
   margin-right: 15px;
@@ -39,11 +51,16 @@ select.mainSelect {
   margin-bottom: 15px;
 }
 
+.descrition {
+  white-space: nowrap;
+}
+
 input {
   color: inherit;
-  background-color: #004506;
-  border: 1px solid #70ff00;
-  padding: 5px;
+  background-color: var(--bg-alt-color);
+  border: 1px solid var(--light-color);
+  border-radius: 0px;
+  line-height:30px;
 }
 
 input.numInput {
@@ -52,8 +69,8 @@ input.numInput {
 
 textarea {
   color: inherit;
-  background-color: #004506;
-  border: 1px solid #70ff00;
+  background-color: var(--bg-alt-color);
+  border: 1px solid var(--light-color);
   width: 100%;
   height: 250px;
   padding: 5px;
@@ -62,7 +79,7 @@ textarea {
 button {
   color: inherit;
   background-color: inherit;
-  border: 1px solid #70ff00;
+  border: 1px solid var(--light-color);
   background-color: #173400;
   padding: 5px;
 }
@@ -100,12 +117,52 @@ li a {
 
 li {
   margin: 10px;
+  margin-top: 20px;
 }
 
 .leftMargin {
-  margin-left: 10px;
+  margin-left: var(--margins);
 }
 
 .rightMargin {
-  margin-right: 10px;
+  margin-right: var(--margins);
+}
+
+.topMargin {
+  margin-top: var(--margins);
+}
+
+.bottomMargin {
+  margin-bottom: var(--margins);
+}
+
+.checkboxWithLabel {
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  body {
+    font-size: 45px;
+  }
+
+  textarea, input, select {
+    font-size: 0.8em;
+  }
+
+  .checkInput {
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 10px;
+  }
+
+  .subHeader {
+    margin-bottom: 25px;
+  }
+
+  button {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+
 }

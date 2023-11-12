@@ -5,6 +5,8 @@ import { Output } from './Output'
 import { useState, useEffect } from 'react'
 import { PropTypes } from 'prop-types'
 
+import './LoremIpsumGenerator.css'
+
 export function LoremIpsumGenerator() {
 
   // object containing data about what string should be generated and resulted string
@@ -172,7 +174,7 @@ export function LoremIpsumGenerator() {
   }, [])
 
   return (
-    <div className="LoremIpsumGenerator">
+    <div className="LoremIpsumGeneratorCSS">
       <Input data={data} handleChange={generate} />
       <Output outputString={data.output} charCount={data.output.length} wordList={words} />
     </div>
