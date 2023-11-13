@@ -38,13 +38,11 @@ Depending on Linux distribution, environment variables may be set in one of the 
 - `/etc/profile`
 - `~/.zshrc`
 
-Example of setting up OS specific environment variable `MY_VAR` with value of `Hello, world` on Linux Mint 20 in file `~/.bashrc`:
+Example of setting up OS specific environment variable `MY_VAR` with value of `Hello, world` on Linux Mint 20 in `/etc/environment` file:
 
-1. At the end of file add following lines:
-   1. `MY_VAR="Hello, world"`
-   2. `export MY_VAR`
+1. At the end of the file add following line: `MY_VAR="Hello, world"`
 2. Save the file
-3. Run command `source ~/.bashrc` to apply the changes
+3. Run command `source /etc/environment` to apply the changes
 4. Test the variable by running command `echo $MY_VAR` in Linux terminal or `process.env.MY_VAR` in nodejs `node` console
 
 ### React Specific Environment Variables
