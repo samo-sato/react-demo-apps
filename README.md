@@ -10,8 +10,6 @@ Main web app contains multiple light-weight apps with different functionality as
 
 # Run the App
 
-**Note:** *This README file assumes that the app will be run on Linux operating system*
-
 ## Install Dependencies
 
 - npm (tested on v9.6.3)
@@ -37,13 +35,6 @@ Depending on Linux distribution, environment variables may be set in one of the 
 - `/etc/environment`
 - `/etc/profile`
 - `~/.zshrc`
-
-Example of setting up OS specific environment variable `MY_VAR` with value of `Hello, world` on Linux Mint 20 in `/etc/environment` file:
-
-1. At the end of the file add following line: `MY_VAR="Hello, world"`
-2. Save the file
-3. Run command `source /etc/environment` to apply the changes
-4. Test the variable by running command `echo $MY_VAR` in Linux terminal or `process.env.MY_VAR` in nodejs `node` console
 
 ### React Specific Environment Variables
 
