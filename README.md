@@ -18,34 +18,8 @@ Main web app contains multiple light-weight apps with different functionality as
 
 ## Set Environment Variables
 
-### OS Server Specific Environment Variables
-
-Set the variables as described in following table:
-
-|Variable Name|Default Value|Description|
-|---|---|---|
-|`RDA_BACKEND_PORT`|3001|REST API server will be listening on this port number|
-|`RDA_BASE_PATH`|*empty string*|Base path (sub-directory) with leading forward slash (e.g. `/react-demo-apps`) or just empty string `` when running under root URL|
-
-Depending on Linux distribution, environment variables may be set in one of the following files:
-
-- `~/.bashrc`
-- `~/.bash_profile`
-- `~/.profile`
-- `/etc/environment`
-- `/etc/profile`
-- `~/.zshrc`
-
-### React Specific Environment Variables
-
-Following variables are stored in `.env.example` file in project directory. **Set variables into `.env` file instead.**
-
-|Variable Name|Default value|Description|
-|---|---|---|
-|`REACT_APP_BACKEND_PORT`|3001|Frontend will make requests to this port number. Leave empty string if no port is required in resource URL.|
-|`REACT_APP_BASE_PATH`|*empty string*|Value should be equal to `RDA_BASE_PATH` variable|
-
-**Do not** store sensitive data in `.env` file, as it could be accessed by anyone.
+Copy `.env.example` file and rename it to `.env`.
+Update the values inside `.env` as needed.
 
 ## Modify package.json File (Optional)
 
@@ -61,4 +35,4 @@ Use command `node backend/server.js` from project directory, to run backend scri
 
 - If using build, then serve the app with `serve -s build` or use other serving tool like *Nginx* or *Apache*
 
-MIT License Copyright (c) 2023 https://github.com/samo-sato
+MIT License Copyright (c) 2025 https://github.com/samo-sato

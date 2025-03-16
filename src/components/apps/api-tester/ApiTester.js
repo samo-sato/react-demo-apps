@@ -1,78 +1,78 @@
-import React from 'react'
-import { copyToClipboard } from '../../genericFunctions.js'
-import { useRef, useState } from 'react'
+import React from 'react';
+import { copyToClipboard } from '../../genericFunctions.js';
+import { useRef, useState } from 'react';
 
-import './ApiTester.css'
+import './ApiTester.css';
 
 // API server endpoint url
-const portNumber = process.env.REACT_APP_BACKEND_PORT
-const portSegment = portNumber ? `:${portNumber}` : ''
-const backendRoot = `${window.location.protocol}//${window.location.hostname}${portSegment}`
-const path = `${process.env.REACT_APP_BASE_PATH}/api/make-request`
-const resource = `${backendRoot}${path}`
+const portNumber = process.env.REACT_APP_BACKEND_PORT;
+const portSegment = portNumber ? `:${portNumber}` : '';
+const backendRoot = `${window.location.protocol}//${window.location.hostname}${portSegment}`;
+const path = `${process.env.REACT_APP_BASE_PATH}/api/make-request`;
+const resource = `${backendRoot}${path}`;
 
 export function ApiTester() {
 
-  // loading animation effect
-  let intervalID
+  // Loading animation effect
+  let intervalID;
   function loadingEffectStart() {
-    const container = document.getElementById('arrows')
-    const arrows = container.childNodes
-    const steps = arrows.length + 1 // steps is total number of frames in animations, +1 is accounting for the (comment not finished yet)
+    const container = document.getElementById('arrows');
+    const arrows = container.childNodes;
+    const steps = arrows.length + 1; // Steps is total number of frames in animations, +1 is accounting for the (comment not finished yet)
 
-    // making all arrows in parent container invisible
+    // Making all arrows in parent container invisible
     const hideArrows = () => {
       arrows.forEach((arrow) => {
-        arrow.style.opacity = 0
-      })
-    }
+        arrow.style.opacity = 0;
+      });
+    };
 
-    hideArrows() // first step - making all arrows invisible
+    hideArrows() // First step - making all arrows invisible
 
-    let step = 0
-    intervalID = setInterval(() => { // loop arrows in order to make them isible one by one
+    let step = 0;
+    intervalID = setInterval(() => { // Loop arrows in order to make them isible one by one
 
-      if (step < steps - 1) { // make arrow visible, and after all are visible hide them again
-        arrows[step].style.opacity = 1
+      if (step < steps - 1) { // Make arrow visible, and after all are visible hide them again
+        arrows[step].style.opacity = 1;
       } else {
-        hideArrows()
+        hideArrows();
       }
 
-      step++ // incrementing the step counter
+      step++; // Incrementing the step counter
 
-      if (step >= steps) { // reseting the step counter
-        step = 0
+      if (step >= steps) { // Reseting the step counter
+        step = 0;
       }
 
-    }, 150)
+    }, 150);
   }
 
-  // stop loading animation effect
+  // Stop loading animation effect
   function loadingEffectStop() {
     document.getElementById('arrows').childNodes.forEach((arrow) => {
-      arrow.style.opacity = 1
-    })
-    clearInterval(intervalID)
+      arrow.style.opacity = 1;
+    });
+    clearInterval(intervalID);
   }
 
   // useRef
-  const inputs = {}
-  inputs.url = useRef(null)
-  inputs.method = useRef(null)
-  inputs.headers = useRef(null)
-  inputs.body = useRef(null)
-  const textareaHeaders = useRef(null)
-  const textareaBody = useRef(null)
+  const inputs = {};
+  inputs.url = useRef(null);
+  inputs.method = useRef(null);
+  inputs.headers = useRef(null);
+  inputs.body = useRef(null);
+  const textareaHeaders = useRef(null);
+  const textareaBody = useRef(null);
 
   // useState
-  const [ errors, setErrors ] = useState('')
-  const [ responseCode, setResponseCode ] = useState('')
-  const [ responseStatusText, setResponseStatusText ] = useState('')
-  const [ responseHeaders, setResponseHeaders ] = useState('')
-  const [ responseBody, setResponseBody ] = useState('')
+  const [errors, setErrors] = useState('');
+  const [responseCode, setResponseCode] = useState('');
+  const [responseStatusText, setResponseStatusText] = useState('');
+  const [responseHeaders, setResponseHeaders] = useState('');
+  const [responseBody, setResponseBody] = useState('');
 
-  // textholder on html button for copying textarea content to clipboard
-  const copyButtonText = 'Copy to Clipboard'
+  // Textholder on html button for copying textarea content to clipboard
+  const copyButtonText = 'Copy to Clipboard';
 
   function makeHttpRequest() {
     return new Promise((resolve, reject) => {
@@ -80,20 +80,20 @@ export function ApiTester() {
       const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json'
-      }
+      };
 
       const body = JSON.stringify({
           inputUrl: inputs.url.current.value,
           inputMethod: inputs.method.current.value,
           inputHeaders: inputs.headers.current.value,
           inputBody: inputs.body.current.value
-        })
+        });
 
       const options = {
         method: 'POST',
         headers: headers,
         body: body
-      }
+      };
 
       fetch(resource, options)
         .then(response => {
@@ -101,44 +101,44 @@ export function ApiTester() {
         })
         .catch(error => {
           reject(error)
-        })
+        });
 
-    })
+    });
   }
 
   function handleMakeRequest() {
 
-    loadingEffectStart() // loading animation starts
+    loadingEffectStart(); // Loading animation starts
 
     makeHttpRequest()
       .then(response => {
         response.json()
           .then(bodyJson => {
             if (bodyJson.success) {
-              console.log('Validation ok')
-              loadingEffectStop() // loading animation stops
-              setErrors('') // removing possible error messages from html page
+              console.log('Validation ok');
+              loadingEffectStop(); // Loading animation stops
+              setErrors(''); // Removing possible error messages from html page
               setResponseCode(bodyJson.data.statusCode)
               setResponseStatusText(bodyJson.data.statusText)
               setResponseHeaders(bodyJson.data.responseHeaders)
               setResponseBody(bodyJson.data.responseBody)
-            } else { // remove old results and add error message for user
-              setResponseCode('')
-              setResponseStatusText('')
-              setResponseHeaders('')
-              setResponseBody('')
+            } else { // Remove old results and add error message for user
+              setResponseCode('');
+              setResponseStatusText('');
+              setResponseHeaders('');
+              setResponseBody('');
               setErrors(bodyJson.errors.map((err, index) => {
-                console.log(`Error: ${err}`)
-                loadingEffectStop() // loading animation stops
-                return <p key={index}>{err}</p>
-              }))
+                console.log(`Error: ${err}`);
+                loadingEffectStop(); // Loading animation stops
+                return <p key={index}>{err}</p>;
+              }));
             }
           })
       })
       .catch(error => {
-        loadingEffectStop() // loading animation stops
-        setErrors('Fetch error')
-        console.log(error)
+        loadingEffectStop(); // Loading animation stops
+        setErrors('Fetch error');
+        console.log(error);
       })
   }
 
@@ -163,8 +163,8 @@ export function ApiTester() {
               <span className="leftMargin">method selected</span>
               <br />
               <br />
-              <p>Headers (as JSON)</p>
-              <textarea ref={inputs.headers}>
+              <p>Headers (as JSON with double quotes)</p>
+              <textarea ref={inputs.headers} placeholder='Example: {"Content-Type": "application/json"}'>
               </textarea>
               <br />
               <br />
@@ -181,10 +181,10 @@ export function ApiTester() {
           </div>
           <div>
             <div id="arrows">
-              { /* generating "chain" of arrow symbols */ }
+              { /* Generating `chain` of arrow symbols */ }
               {
                 Array.from({ length: 3 }, (_, i) => (
-                  <span className="arrow" key={i}>></span>
+                  <span className="arrow" key={i}>&gt;</span>
                 ))
               }
             </div>

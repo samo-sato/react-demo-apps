@@ -1,3 +1,6 @@
+// Import React environment variables from `.env` file
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 const path = require('path') // for working with file and directory paths
@@ -17,7 +20,7 @@ app.use(bodyParser.text()) // for receiving plain text data in the body
 
 // using "express router" in order to always use "api" path at begining of endpoint url
 const router = express.Router()
-const basePath = process.env.RDA_BASE_PATH
+const basePath = process.env.REACT_APP_BASE_PATH
 app.use(`${basePath}/api`, router)
 
 router.get('/', (req, res) => {
@@ -110,6 +113,7 @@ function validate(data, userIP) {
 
   // validating if given headers is valid JSON string
   try {
+    console.log(data.inputHeaders)
     validated.inputHeaders = data.inputHeaders ? JSON.parse(data.inputHeaders) : {}
   } catch (error) {
     console.log(error)
@@ -153,7 +157,6 @@ router.post('/make-request', async (req, res) => {
 
     // making actual request to user given url using node-fetch
     nodeFetch(url, {
-      //method: method,
       method: method,
       headers: requestHeaders,
       body: requestBody
